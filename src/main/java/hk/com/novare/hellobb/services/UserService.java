@@ -33,7 +33,7 @@ public class UserService {
     public UserService() {
         users = new ArrayList<>();
         try {
-            //Attempt to laod all users from the application's working directory.
+            //Attempt to load all users from the application's working directory.
             loadAllUsers(users);
         } catch (IOException e) {
             //If an error occurs, pass the exception notice to the logger.
