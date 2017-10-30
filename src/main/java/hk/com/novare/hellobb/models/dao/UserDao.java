@@ -1,6 +1,7 @@
-package hk.com.novare.hellobb.models;
+package hk.com.novare.hellobb.models.dao;
 
 import hk.com.novare.hellobb.controllers.AnnounceController;
+import hk.com.novare.hellobb.models.User;
 
 import java.util.List;
 

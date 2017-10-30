@@ -26,8 +26,17 @@ import java.util.Optional;
 public class UserService {
 
     //This is where all Users files are kept. By default, it's the current working directory.
-    public static final String USER_DIRECTORY = "";
+    public static final String USER_DIRECTORY = "src/main/resources/users/";
     private Logger logger = LoggerFactory.getLogger(UserService.class);
+
+    /**
+     * Retrieves the list of users.
+     * May be empty if no files are found or if an error has occurred.
+     * @return
+     */
+    public List<User> getUsers() {
+        return users;
+    }
 
     private List<User> users;
 
@@ -46,6 +55,7 @@ public class UserService {
     /**
      * This will load all users from the filesystem to the provided
      * collection.
+     *
      * @param usersList
      */
     private void loadAllUsers(List<User> usersList) throws IOException {
@@ -66,6 +76,7 @@ public class UserService {
     /**
      * This method's sole job is to read a Path's contents and return a User.
      * If it can't be parsed due to errors, it'll return an empty Optional instead.
+     *
      * @param userFile
      * @return
      */
@@ -79,8 +90,10 @@ public class UserService {
             userFileContents.forEach(contentBuilder::append);
 
             //Use JacksonMapper to read the entire file and create a User class if it's valid JSON.
+            //The ObjectMapper is a very powerful tool. It'll let you convert Java objects to JSON and back.
             ObjectMapper om = new ObjectMapper();
             User parsedUser = om.readValue(contentBuilder.toString(), User.class);
+            logger.info("Parsed user: " + parsedUser.getName());
 
             return Optional.of(parsedUser);
         } catch (IOException e) {
