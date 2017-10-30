@@ -8,5 +8,7 @@ public class HelloBbApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HelloBbApplication.class, args);
+        
+        //this is a comment
     }
 }
