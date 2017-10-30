@@ -5,7 +5,7 @@ import hk.com.novare.hellobb.controllers.AnnounceController;
 /**
  * A user is an entry in a file that contains
  * a name and his/her greeting.
- *
+ * <p>
  * This class is used by the {@link AnnounceController}
  * during announcements.
  *

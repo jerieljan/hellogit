@@ -27,10 +27,11 @@ public class AnnounceController {
     /**
      * This is a simple HTTP endpoint. It simply assembles our {@link UserDao}
      * declares its status and calls the {@link UserService} for user information.
+     *
      * @return
      */
-    @GetMapping("/")
-    public ResponseEntity<UserDao> announceAll()  {
+    @GetMapping({"", "/"})
+    public ResponseEntity<UserDao> announceAll() {
         UserDao userDao = new UserDao();
         userDao.setStatus("Success.");
         userDao.setUsers(userService.getUsers());

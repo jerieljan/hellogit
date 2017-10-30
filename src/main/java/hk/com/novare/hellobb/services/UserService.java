@@ -28,16 +28,6 @@ public class UserService {
     //This is where all Users files are kept. By default, it's the current working directory.
     public static final String USER_DIRECTORY = "src/main/resources/users/";
     private Logger logger = LoggerFactory.getLogger(UserService.class);
-
-    /**
-     * Retrieves the list of users.
-     * May be empty if no files are found or if an error has occurred.
-     * @return
-     */
-    public List<User> getUsers() {
-        return users;
-    }
-
     private List<User> users;
 
     public UserService() {
@@ -50,6 +40,16 @@ public class UserService {
             users = Collections.EMPTY_LIST;
             logger.error("User service cannot run: ", e);
         }
+    }
+
+    /**
+     * Retrieves the list of users.
+     * May be empty if no files are found or if an error has occurred.
+     *
+     * @return
+     */
+    public List<User> getUsers() {
+        return users;
     }
 
     /**

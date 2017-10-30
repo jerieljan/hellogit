@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author jerieljan
  */
 public class UserTest {
-    
+
     @Test
     public void simpleTest() throws Exception {
         User u = new User();
