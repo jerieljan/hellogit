@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HelloBbApplication {
 
+    
+    // changed
     public static void main(String[] args) {
         SpringApplication.run(HelloBbApplication.class, args);
     }
