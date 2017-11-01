@@ -10,5 +10,7 @@ public class HelloBbApplication {
     // changed
     public static void main(String[] args) {
         SpringApplication.run(HelloBbApplication.class, args);
+        
+        //this is a comment
     }
 }
