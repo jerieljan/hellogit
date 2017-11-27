@@ -1,7 +1,7 @@
-package hk.com.novare.hellobb.services;
+package hk.com.novare.hellogit.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hk.com.novare.hellobb.models.User;
+import hk.com.novare.hellogit.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

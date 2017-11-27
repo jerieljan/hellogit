@@ -1,7 +1,7 @@
-package hk.com.novare.hellobb.models.dao;
+package hk.com.novare.hellogit.models.dao;
 
-import hk.com.novare.hellobb.controllers.AnnounceController;
-import hk.com.novare.hellobb.models.User;
+import hk.com.novare.hellogit.controllers.AnnounceController;
+import hk.com.novare.hellogit.models.User;
 
 import java.util.List;
 

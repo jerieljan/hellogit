@@ -1,9 +1,9 @@
-package hk.com.novare.hellobb;
+package hk.com.novare.hellogit;
 
-import hk.com.novare.hellobb.controllers.AnnounceController;
-import hk.com.novare.hellobb.models.User;
-import hk.com.novare.hellobb.models.dao.UserDao;
-import hk.com.novare.hellobb.services.UserService;
+import hk.com.novare.hellogit.controllers.AnnounceController;
+import hk.com.novare.hellogit.models.User;
+import hk.com.novare.hellogit.models.dao.UserDao;
+import hk.com.novare.hellogit.services.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HelloBbApplicationTests {
+public class HelloGitApplicationTests {
 
 
     @Autowired

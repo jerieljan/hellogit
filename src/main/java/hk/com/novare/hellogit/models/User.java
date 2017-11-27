@@ -1,6 +1,6 @@
-package hk.com.novare.hellobb.models;
+package hk.com.novare.hellogit.models;
 
-import hk.com.novare.hellobb.controllers.AnnounceController;
+import hk.com.novare.hellogit.controllers.AnnounceController;
 
 /**
  * A user is an entry in a file that contains
