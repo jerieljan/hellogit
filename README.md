@@ -1,4 +1,4 @@
-# Hello BitBucket
+# Hello Git
 
 This is a sample project that runs a Spring Boot application
 with a bit of the essentials on a REST API -- a Controller

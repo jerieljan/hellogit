@@ -1,4 +1,4 @@
-package hk.com.novare.hellobb.models;
+package hk.com.novare.hellogit.models;
 
 import org.junit.Assert;
 import org.junit.Test;

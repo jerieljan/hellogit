@@ -1,8 +1,8 @@
-package hk.com.novare.hellobb.controllers;
+package hk.com.novare.hellogit.controllers;
 
-import hk.com.novare.hellobb.models.User;
-import hk.com.novare.hellobb.models.dao.UserDao;
-import hk.com.novare.hellobb.services.UserService;
+import hk.com.novare.hellogit.models.User;
+import hk.com.novare.hellogit.models.dao.UserDao;
+import hk.com.novare.hellogit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

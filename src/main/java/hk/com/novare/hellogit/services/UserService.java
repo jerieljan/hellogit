@@ -1,7 +1,7 @@
-package hk.com.novare.hellobb.services;
+package hk.com.novare.hellogit.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hk.com.novare.hellobb.models.User;
+import hk.com.novare.hellogit.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Date: 10/30/17
- * Time: 11:00 AM
+ * The UserService handles User-related processes. In this project, we're
+ * not exactly using a conventional database and a Repository -- we're just reading
+ * off files on the system's classpath.
+ * <p>
+ * So for now, that's UserService's job -- read flat files then turn them to {@link User} objects
+ * that our system can use.
  *
  * @author jerieljan
  */
@@ -33,7 +37,7 @@ public class UserService {
     public UserService() {
         users = new ArrayList<>();
         try {
-            //Attempt to laod all users from the application's working directory.
+            //Attempt to load all users from the application's working directory.
             loadAllUsers(users);
         } catch (IOException e) {
             //If an error occurs, pass the exception notice to the logger.
