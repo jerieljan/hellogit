@@ -20,10 +20,9 @@ import java.util.Optional;
  * The UserService handles User-related processes. In this project, we're
  * not exactly using a conventional database and a Repository -- we're just reading
  * off files on the system's classpath.
- *
+ * <p>
  * So for now, that's UserService's job -- read flat files then turn them to {@link User} objects
  * that our system can use.
- *
  *
  * @author jerieljan
  */
