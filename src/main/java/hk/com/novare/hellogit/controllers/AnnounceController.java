@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AnnounceController {
 
 
-    /*@Autowired
+    @Autowired
     private UserService userService;
 
     /**
@@ -31,16 +31,18 @@ public class AnnounceController {
      *
      * @return
      */
-    /*@GetMapping({"", "/"})
+
+    @GetMapping({"", "/"})
     public ResponseEntity<UserDao> announceAll() {
         UserDao userDao = new UserDao();
         userDao.setStatus("Success.");
         userDao.setUsers(userService.getUsers());
 
         return ResponseEntity.ok(userDao);
-    }*/
-    public String getInfo(@PathVariable("name") String name) {
+    }
+
+    /*public String getInfo(@PathVariable("name") String name) {
         System.out.println("name:"+ name);
         return "success";
-    }
+    }*/
 }
