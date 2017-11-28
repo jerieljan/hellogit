@@ -32,7 +32,7 @@ public class AnnounceController {
      * @return
      */
 
-    GetMapping({"", "/"})
+    @GetMapping({"", "/"})
     public ResponseEntity<UserDao> announceAll() {
         UserDao userDao = new UserDao();
         userDao.setStatus("Success.");
