@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jerieljan
  */
 @RestController
-@RequestMapping("announce")
+@RequestMapping("/announce/{name}")
 public class AnnounceController {
 
 
@@ -38,4 +38,6 @@ public class AnnounceController {
 
         return ResponseEntity.ok(userDao);
     }
+
+
 }
