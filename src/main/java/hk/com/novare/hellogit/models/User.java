@@ -1,6 +1,7 @@
 package hk.com.novare.hellogit.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import hk.com.novare.hellogit.controllers.AnnounceController;
 
 /**
@@ -12,18 +13,13 @@ import hk.com.novare.hellogit.controllers.AnnounceController;
  *
  * @author jerieljan
  */
+@JsonInclude(Include.NON_EMPTY)
 public class User {
 
     private String name;
     private String greeting;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String date;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String university;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String work;
 
     public String getName() {
