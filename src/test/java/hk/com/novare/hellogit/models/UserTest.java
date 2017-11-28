@@ -16,7 +16,15 @@ public class UserTest {
         User u = new User();
         u.setName("Test");
         u.setGreeting("Hello");
+        u.setDate("Date");
+        u.setUniversity("University");
+        u.setWork("Work");
         Assert.assertEquals("Test", u.getName());
         Assert.assertEquals("Hello", u.getGreeting());
+        Assert.assertEquals("Date", u.getDate());
+        Assert.assertEquals("University", u.getUniversity());
+        Assert.assertEquals("Work", u.getWork());
+
+
     }
 }
