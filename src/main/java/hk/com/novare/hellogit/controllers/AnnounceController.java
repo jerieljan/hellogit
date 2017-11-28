@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jerieljan
  */
 @RestController
-@RequestMapping("announce")
+@RequestMapping(value="/announce/{name}")
 public class AnnounceController {
 
 
