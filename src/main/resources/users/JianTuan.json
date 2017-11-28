@@ -1,4 +1,7 @@
 {
   "name": "Jian Tuan",
-  "greeting": "Good day, I am an OJT student from STI Ortigas-Cainta"
+  "greeting": "Good day, I am an OJT student from STI Ortigas-Cainta",
+  "date": "November 28, 2017",
+  "university": "STI College Ortigas-Cainta",
+  "work": "Web Developer (currently: Backend)"
 }
