@@ -1,4 +1,7 @@
 {
   "name": "Mary Car",
-  "greeting": "Hi! I am an ojt student from PUP"
+  "greeting": "Hi! I am an ojt student from PUP",
+  "date": "November 28, 2017",
+  "university": "Polytechnic University of the Philippines",
+  "work": "Software Engineer"
 }

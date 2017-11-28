@@ -35,6 +35,7 @@ public class User {
         this.greeting = greeting;
     }
 
+
     public String getDate() {
         return date;
     }
@@ -58,4 +59,17 @@ public class User {
     public void setWork(String work) {
         this.work = work;
     }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date) { this.date = date; }
+
+    public String getUniversity() { return university; }
+
+    public void setUniversity(String university) { this.university = university; }
+
+    public String getWork() { return work; }
+
+    public void setWork(String work) { this.work = work; }
+
 }

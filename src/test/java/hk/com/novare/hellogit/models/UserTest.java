@@ -24,7 +24,13 @@ public class UserTest {
         Assert.assertEquals("November", u.getDate());
         Assert.assertEquals("STI College Ortigas-Cainta", u.getUniversity());
         Assert.assertEquals("Web Development (current: Backend)", u.getWork());
-
+        u.setUniversity("PUP");
+        u.setWork("Software Engineer");
+        Assert.assertEquals("Test", u.getName());
+        Assert.assertEquals("Hello", u.getGreeting());
+        Assert.assertEquals("November", u.getDate());
+        Assert.assertEquals("PUP", u.getUniversity());
+        Assert.assertEquals("Software Engineer", u.getWork());
 
     }
 }
