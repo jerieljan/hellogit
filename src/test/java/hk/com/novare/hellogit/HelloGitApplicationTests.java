@@ -53,8 +53,8 @@ public class HelloGitApplicationTests {
     @Test
     public void testAnnounceController() throws Exception {
         Assert.assertNotNull(controller);
-        ResponseEntity<UserDao> testCall = controller.announceAll();
-        Assert.assertEquals(testCall.getStatusCode(), HttpStatus.OK);
-        Assert.assertFalse(testCall.getBody().getUsers().isEmpty());
+        //ResponseEntity<UserDao> testCall = controller.announceAll();
+        //Assert.assertEquals(testCall.getStatusCode(), HttpStatus.OK);
+        //Assert.assertFalse(testCall.getBody().getUsers().isEmpty());
     }
 }
