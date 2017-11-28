@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jerieljan
  */
 @RestController
-@RequestMapping("announce")
+@RequestMapping(value="announce")
 public class AnnounceController {
 
 
@@ -32,7 +32,7 @@ public class AnnounceController {
      * @return
      */
 
-    @GetMapping({"", "/"})
+    GetMapping({"", "/"})
     public ResponseEntity<UserDao> announceAll() {
         UserDao userDao = new UserDao();
         userDao.setStatus("Success.");
