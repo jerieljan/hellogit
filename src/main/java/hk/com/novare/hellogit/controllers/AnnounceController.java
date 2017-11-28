@@ -40,9 +40,4 @@ public class AnnounceController {
 
         return ResponseEntity.ok(userDao);
     }
-
-    /*public String getInfo(@PathVariable("name") String name) {
-        System.out.println("name:"+ name);
-        return "success";
-    }*/
 }
