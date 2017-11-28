@@ -15,6 +15,9 @@ public class User {
 
     private String name;
     private String greeting;
+    private String date;
+    private String university;
+    private String work;
 
     public String getName() {
         return name;
@@ -31,4 +34,16 @@ public class User {
     public void setGreeting(String greeting) {
         this.greeting = greeting;
     }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date) { this.date = date; }
+
+    public String getUniversity() { return university; }
+
+    public void setUniversity(String university) { this.university = university; }
+
+    public String getWork() { return work; }
+
+    public void setWork(String work) { this.work = work; }
 }
