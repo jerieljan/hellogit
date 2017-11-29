@@ -13,7 +13,7 @@ to your computer.
 
 Use `mvn clean install` to start things up.
 
-Use `mvn spring-boot:run` to start the server. You can perform calls to `http://localhost:8080/announce`
+Use `mvn spring-boot:run` to start the server. You can perform calls to `http://localhost:8080/users`
 and should see a list of users.
 
 Use `mvn test` to run unit tests.

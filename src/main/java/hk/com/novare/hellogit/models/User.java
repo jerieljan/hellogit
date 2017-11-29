@@ -2,13 +2,13 @@ package hk.com.novare.hellogit.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import hk.com.novare.hellogit.controllers.AnnounceController;
+import hk.com.novare.hellogit.controllers.UserController;
 
 /**
  * A user is an entry in a file that contains
  * a name and his/her greeting.
  * <p>
- * This class is used by the {@link AnnounceController}
+ * This class is used by the {@link UserController}
  * during announcements.
  *
  * @author jerieljan
