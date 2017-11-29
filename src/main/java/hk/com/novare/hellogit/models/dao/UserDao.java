@@ -3,6 +3,7 @@ package hk.com.novare.hellogit.models.dao;
 import hk.com.novare.hellogit.controllers.UserController;
 import hk.com.novare.hellogit.models.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,18 @@ public class UserDao {
 
     private String status;
     private List<User> users;
+
+    public UserDao() {
+    }
+
+    public UserDao(List<User> users) {
+        this.users = users;
+    }
+
+    public UserDao(User singleUser) {
+        this.users = new ArrayList<>();
+        users.add(singleUser);
+    }
 
     public String getStatus() {
         return status;

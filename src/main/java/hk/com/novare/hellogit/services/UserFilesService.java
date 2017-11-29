@@ -54,6 +54,15 @@ public class UserFilesService {
         return users;
     }
 
+    public User getUserByName(String name) {
+        for (User u : users) {
+            if (u.getName().equals(name)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
     /**
      * This will load all users from the filesystem to the provided
      * collection.

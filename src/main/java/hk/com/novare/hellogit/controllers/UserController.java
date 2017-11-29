@@ -3,9 +3,12 @@ package hk.com.novare.hellogit.controllers;
 import hk.com.novare.hellogit.models.User;
 import hk.com.novare.hellogit.models.dao.UserDao;
 import hk.com.novare.hellogit.services.UserFilesService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("users")
 public class UserController {
+
+    public static final String SUCCESS = "Success.";
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
     @Autowired
@@ -34,9 +40,22 @@ public class UserController {
     @GetMapping({"", "/"})
     public ResponseEntity<UserDao> listAllUsers() {
         UserDao userDao = new UserDao();
-        userDao.setStatus("Success.");
+        userDao.setStatus(SUCCESS);
         userDao.setUsers(userFilesService.getUsers());
 
+
         return ResponseEntity.ok(userDao);
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<UserDao> getSpecificUser(@PathVariable String name) {
+        User matchingUser = userFilesService.getUserByName(name.replaceAll("_", " ").replaceAll("%20", " "));
+        if (matchingUser == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            UserDao userDao = new UserDao(matchingUser);
+            userDao.setStatus(SUCCESS);
+            return ResponseEntity.ok(userDao);
+        }
     }
 }
