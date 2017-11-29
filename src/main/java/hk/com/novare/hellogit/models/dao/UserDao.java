@@ -1,13 +1,13 @@
 package hk.com.novare.hellogit.models.dao;
 
-import hk.com.novare.hellogit.controllers.AnnounceController;
+import hk.com.novare.hellogit.controllers.UserController;
 import hk.com.novare.hellogit.models.User;
 
 import java.util.List;
 
 /**
  * This data access object helps in creating the output response of
- * {@link AnnounceController} when handling requests.
+ * {@link UserController} when handling requests.
  *
  * @author jerieljan
  */
