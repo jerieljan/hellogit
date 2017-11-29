@@ -15,6 +15,7 @@ import java.util.List;
 public class UserDao {
 
     private String status;
+    private String message;
     private List<User> users;
 
     public UserDao() {
@@ -36,6 +37,10 @@ public class UserDao {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getMessage() { return message; }
+
+    public void setMessage(String message) { this.message = message; }
 
     public List<User> getUsers() {
         return users;
