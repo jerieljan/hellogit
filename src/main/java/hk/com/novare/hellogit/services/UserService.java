@@ -1,6 +1,7 @@
 package hk.com.novare.hellogit.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import hk.com.novare.hellogit.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,6 +85,8 @@ public class UserService {
      * @param userFile
      * @return
      */
+
+    @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
     private Optional<User> parseUserFile(Path userFile) {
         try {
             //Read all the lines (Java 7 NIO)
