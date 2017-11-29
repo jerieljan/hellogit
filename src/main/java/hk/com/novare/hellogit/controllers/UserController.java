@@ -6,11 +6,9 @@ import hk.com.novare.hellogit.services.UserFilesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controllers serve as entrypoints (well, they serve endpoints) to
@@ -57,5 +55,25 @@ public class UserController {
             userDao.setStatus(SUCCESS);
             return ResponseEntity.ok(userDao);
         }
+    }
+
+    @DeleteMapping("/{name}")
+    public ResponseEntity<UserDao> deleteUser(@PathVariable String name) {
+        User matchingUser= userFilesService.deleteUserByName(name.replaceAll("_", " ").replaceAll("%20", " "));
+        if (matchingUser == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            UserDao userDao = new UserDao(matchingUser);
+            userDao.setStatus(SUCCESS);
+            return ResponseEntity.ok(userDao);
+        }
+    }
+
+    @PostMapping({"", "/"})
+    public ResponseEntity<UserDao> addUser(@RequestBody User user) {
+        UserDao userDao = new UserDao();
+        userFilesService.addUser(user);
+        userDao.setStatus(SUCCESS);
+        return ResponseEntity.ok(userDao);
     }
 }
