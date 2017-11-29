@@ -1,5 +1,7 @@
 # Hello Git
 
+[![Build Status](https://travis-ci.org/jerieljan/hellogit.svg?branch=master)](https://travis-ci.org/jerieljan/hellogit)
+
 This is a sample project that runs a Spring Boot application
 with a bit of the essentials on a REST API -- a Controller
 that contains endpoints, a Model (and DAO) for the data, and a
