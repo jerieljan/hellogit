@@ -65,15 +65,17 @@ public class UserController {
         } else {
             UserDao userDao = new UserDao(matchingUser);
             userDao.setStatus(SUCCESS);
+            userDao.setMessage("User has been successfully deleted");
             return ResponseEntity.ok(userDao);
         }
     }
 
     @PostMapping({"", "/"})
-    public ResponseEntity<UserDao> addUser(@RequestBody User user) {
+    public ResponseEntity<UserDao> addUser(@RequestBody User user, String name) {
         UserDao userDao = new UserDao();
         userFilesService.addUser(user);
         userDao.setStatus(SUCCESS);
+        userDao.setMessage("New user has been added");
         return ResponseEntity.ok(userDao);
     }
 }
