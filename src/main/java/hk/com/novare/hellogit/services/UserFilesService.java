@@ -1,7 +1,7 @@
 package hk.com.novare.hellogit.services;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import hk.com.novare.hellogit.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +12,10 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
- * The UserService handles User-related processes. In this project, we're
+ * The UserFilesService handles User-related processes. In this project, we're
  * not exactly using a conventional database and a Repository -- we're just reading
  * off files on the system's classpath.
  * <p>
@@ -28,14 +25,14 @@ import java.util.Optional;
  * @author jerieljan
  */
 @Service
-public class UserService {
+public class UserFilesService {
 
     //This is where all Users files are kept. By default, it's the current working directory.
     public static final String USER_DIRECTORY = "src/main/resources/users/";
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+    private Logger logger = LoggerFactory.getLogger(UserFilesService.class);
     private List<User> users;
 
-    public UserService() {
+    public UserFilesService() {
         users = new ArrayList<>();
         try {
             //Attempt to load all users from the application's working directory.
@@ -57,6 +54,15 @@ public class UserService {
         return users;
     }
 
+    public User getUserByName(String name) {
+        for (User u : users) {
+            if (u.getName().equals(name)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
     /**
      * This will load all users from the filesystem to the provided
      * collection.
@@ -76,6 +82,9 @@ public class UserService {
                 usersList.add(parsedUser.get());
             }
         });
+
+        //Sort the results by their names.
+        usersList.sort(Comparator.comparing(User::getName));
     }
 
     /**
@@ -86,7 +95,7 @@ public class UserService {
      * @return
      */
 
-    @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Optional<User> parseUserFile(Path userFile) {
         try {
             //Read all the lines (Java 7 NIO)

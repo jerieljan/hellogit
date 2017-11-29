@@ -1,13 +1,14 @@
 package hk.com.novare.hellogit.models.dao;
 
-import hk.com.novare.hellogit.controllers.AnnounceController;
+import hk.com.novare.hellogit.controllers.UserController;
 import hk.com.novare.hellogit.models.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * This data access object helps in creating the output response of
- * {@link AnnounceController} when handling requests.
+ * {@link UserController} when handling requests.
  *
  * @author jerieljan
  */
@@ -15,6 +16,18 @@ public class UserDao {
 
     private String status;
     private List<User> users;
+
+    public UserDao() {
+    }
+
+    public UserDao(List<User> users) {
+        this.users = users;
+    }
+
+    public UserDao(User singleUser) {
+        this.users = new ArrayList<>();
+        users.add(singleUser);
+    }
 
     public String getStatus() {
         return status;

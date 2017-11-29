@@ -17,6 +17,13 @@ public class UserTest {
         u.setName("Test");
         u.setGreeting("Hello");
         u.setDate("November");
+        u.setUniversity("STI College Ortigas-Cainta");
+        u.setWork("Web Development (current: Backend)");
+        Assert.assertEquals("Test", u.getName());
+        Assert.assertEquals("Hello", u.getGreeting());
+        Assert.assertEquals("November", u.getDate());
+        Assert.assertEquals("STI College Ortigas-Cainta", u.getUniversity());
+        Assert.assertEquals("Web Development (current: Backend)", u.getWork());
         u.setUniversity("PUP");
         u.setWork("Software Engineer");
         Assert.assertEquals("Test", u.getName());
@@ -24,5 +31,6 @@ public class UserTest {
         Assert.assertEquals("November", u.getDate());
         Assert.assertEquals("PUP", u.getUniversity());
         Assert.assertEquals("Software Engineer", u.getWork());
+
     }
 }
