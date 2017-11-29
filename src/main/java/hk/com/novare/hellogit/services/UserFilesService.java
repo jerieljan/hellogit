@@ -63,6 +63,18 @@ public class UserFilesService {
         return null;
     }
 
+    public User deleteUserByName(String name) {
+
+        for (User u : users) {
+            if (u.getName().equals(name)) {
+                users.remove(u);
+                return u;
+            }
+        }
+
+        return null;
+    }
+
     /**
      * This will load all users from the filesystem to the provided
      * collection.

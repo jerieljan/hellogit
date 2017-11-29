@@ -64,6 +64,13 @@ public class HelloGitApplicationTests {
         Assert.assertEquals("Mary Car", userQueryWithEncodedSpace.getBody().getUsers().get(0).getName());
     }
 
+    @Test
+    public void testDeleteSpecificUser() throws Exception {
+        ResponseEntity<UserDao> userQueryDeleteUser = controller.deleteUser("Mary Car");
+        Assert.assertNotNull(userQueryDeleteUser.getBody());
+        Assert.assertEquals("Mary Car", userQueryDeleteUser.getBody().getUsers().get(0).getName());
+    }
+
     /**
      * This performs a  simple test to our controller:
      * Check if it works, it should respond with OK and with content.
