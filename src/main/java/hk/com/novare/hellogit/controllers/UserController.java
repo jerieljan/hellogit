@@ -68,4 +68,12 @@ public class UserController {
             return ResponseEntity.ok(userDao);
         }
     }
+
+    @PostMapping({"", "/"})
+    public ResponseEntity<UserDao> addUser(@RequestBody User user) {
+        UserDao userDao = new UserDao();
+        userFilesService.addUser(user);
+        userDao.setStatus(SUCCESS);
+        return ResponseEntity.ok(userDao);
+    }
 }

@@ -63,6 +63,11 @@ public class UserFilesService {
         return null;
     }
 
+    public User addUser(User user) {
+        users.add(user);
+        return user;
+    }
+
     public User deleteUserByName(String name) {
 
         for (User u : users) {
