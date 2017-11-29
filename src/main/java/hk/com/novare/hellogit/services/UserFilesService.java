@@ -12,10 +12,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * The UserFilesService handles User-related processes. In this project, we're
@@ -76,6 +73,9 @@ public class UserFilesService {
                 usersList.add(parsedUser.get());
             }
         });
+
+        //Sort the results by their names.
+        usersList.sort(Comparator.comparing(User::getName));
     }
 
     /**
