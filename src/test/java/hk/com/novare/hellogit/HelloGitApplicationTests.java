@@ -42,7 +42,34 @@ public class HelloGitApplicationTests {
         Optional<User> defaultUser = userFilesService.getUsers().stream().filter(it -> it.getName().equals("Jeriel")).findFirst();
         Assert.assertTrue(defaultUser.isPresent());
         Assert.assertEquals("Hello, this is your instructor speaking!", defaultUser.get().getGreeting());
+
+
     }
+
+    @Test
+    public void testSpecificUserLookupWithUnderscore() throws Exception {
+        ResponseEntity<UserDao> userQueryWithSpace = controller.getSpecificUser("Mary_Car");
+        Assert.assertNotNull(userQueryWithSpace.getBody());
+        Assert.assertEquals("Mary Car", userQueryWithSpace.getBody().getUsers().get(0).getName());
+    }
+
+    @Test
+    public void testSpecificUserLookupWithSpace() throws Exception {
+        ResponseEntity<UserDao> userQueryWithSpace = controller.getSpecificUser("Mary Car");
+        Assert.assertNotNull(userQueryWithSpace.getBody());
+        Assert.assertEquals("Mary Car", userQueryWithSpace.getBody().getUsers().get(0).getName());
+
+        ResponseEntity<UserDao> userQueryWithEncodedSpace = controller.getSpecificUser("Mary%20Car");
+        Assert.assertNotNull(userQueryWithEncodedSpace.getBody());
+        Assert.assertEquals("Mary Car", userQueryWithEncodedSpace.getBody().getUsers().get(0).getName());
+    }
+
+    /*@Test
+    public void testDeleteSpecificUser() throws Exception {
+        ResponseEntity<UserDao> userQueryDeleteUser = controller.deleteUser("Mary Car");
+        Assert.assertNotNull(userQueryDeleteUser.getBody());
+        Assert.assertEquals("Mary Car", userQueryDeleteUser.getBody().getUsers().get(0).getName());
+    }*/
 
     /**
      * This performs a  simple test to our controller:

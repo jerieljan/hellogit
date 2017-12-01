@@ -6,6 +6,7 @@ import hk.com.novare.hellogit.services.UserFilesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,6 +79,7 @@ public class UserController {
         return ResponseEntity.ok(userDao);
     }
 
+
     @PutMapping("/{name}")
     public ResponseEntity<UserDao> updateUser(@PathVariable String name, @RequestBody User newUser) {
         User matchingUser = userFilesService.updateUserByName(name.replaceAll("_", " ").replaceAll("%20", " "), newUser);
@@ -92,5 +94,6 @@ public class UserController {
         }
         return null;
     }
+}
 }
 

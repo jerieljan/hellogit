@@ -1,4 +1,7 @@
 {
   "name": "Jeriel",
-  "greeting": "Hello, this is your instructor speaking!"
+  "greeting": "Hello, this is your instructor speaking!",
+  "date": "April 15, 2012",
+  "university": "De La Salle - College of Saint Benilde",
+  "work": "Senior Software Engineer / Technical Manager"
 }

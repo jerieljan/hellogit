@@ -24,7 +24,6 @@ public class UserDao {
     public UserDao() {
     }
 
-
     public UserDao(List<User> users) {
         this.users = users;
     }
@@ -41,6 +40,10 @@ public class UserDao {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getMessage() { return message; }
+
+    public void setMessage(String message) { this.message = message; }
 
     public List<User> getUsers() {
         return users;
