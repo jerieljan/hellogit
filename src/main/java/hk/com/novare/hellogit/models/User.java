@@ -1,7 +1,6 @@
 package hk.com.novare.hellogit.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import hk.com.novare.hellogit.controllers.UserController;
 
 /**
@@ -14,7 +13,8 @@ import hk.com.novare.hellogit.controllers.UserController;
  * @author jerieljan
  */
 
-@JsonInclude(Include.NON_EMPTY)
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
     private String name;

@@ -24,7 +24,6 @@ public class UserDao {
     public UserDao() {
     }
 
-
     public UserDao(List<User> users) {
         this.users = users;
     }
@@ -42,6 +41,10 @@ public class UserDao {
         this.status = status;
     }
 
+    public String getMessage() { return message; }
+
+    public void setMessage(String message) { this.message = message; }
+
     public List<User> getUsers() {
         return users;
     }
@@ -50,11 +53,4 @@ public class UserDao {
         this.users = users;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

@@ -82,6 +82,7 @@ public class UserController {
         return ResponseEntity.ok(userDao);
     }
 
+
     @PutMapping("/{name}")
     public ResponseEntity<UserDao> update(@PathVariable String name, @RequestBody User user) {
         User matchingUser = userFilesService.updateUser(name.replaceAll("_", " ").replaceAll("%20", " "), user);
@@ -100,4 +101,5 @@ public class UserController {
         return null;
     }
 }
+
 
