@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Controllers serve as entrypoints (well, they serve endpoints) to
  * your application. AnnounceController simply presents {@link User} objects
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("users")
 public class UserController {
 
+    Map<String, User> uStore = new HashMap<String, User>();
     public static final String SUCCESS = "Success.";
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -79,11 +83,14 @@ public class UserController {
     }
 
     @PutMapping("/{name}")
-    public ResponseEntity<UserDao> updateUser(@PathVariable String name, @RequestBody User newUser) {
-        User matchingUser = userFilesService.updateUserByName(name.replaceAll("_", " ").replaceAll("%20", " "), newUser);
+    public ResponseEntity<UserDao> update(@PathVariable String name, @RequestBody User user) {
+        User matchingUser = userFilesService.updateUser(name.replaceAll("_", " ").replaceAll("%20", " "), user);
         if (matchingUser != null) {
             UserDao userDao = new UserDao(matchingUser);
-            userFilesService.updateUserByName(name, newUser);
+            uStore.remove(name);
+            user.setName(name);
+            uStore.put(name, user);
+            userFilesService.updateUser(name, user);
             userDao.setStatus(SUCCESS);
             userDao.setMessage("User " + name + " has been successfully updated.");
             return ResponseEntity.ok(userDao);
