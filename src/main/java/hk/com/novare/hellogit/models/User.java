@@ -1,7 +1,6 @@
 package hk.com.novare.hellogit.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import hk.com.novare.hellogit.controllers.UserController;
 
 /**
@@ -13,7 +12,9 @@ import hk.com.novare.hellogit.controllers.UserController;
  *
  * @author jerieljan
  */
-@JsonInclude(Include.NON_EMPTY)
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
     private String name;
@@ -22,17 +23,32 @@ public class User {
     private String university;
     private String work;
 
+    public User(){ }
+
+    public User(String name, String greeting, String date, String university, String work){
+        this.name = name ;
+        this.greeting = greeting;
+        this.date = date;
+        this.university = university;
+        this.work = work;
+    }
+
+    public User(String greeting, String date, String university, String work){
+        this.greeting = greeting;
+        this.date = date;
+        this.university = university;
+        this.work = work;
+
+    }
+
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public String getGreeting() {
-        return greeting;
-    }
+    public String getGreeting() { return greeting; }
 
     public void setGreeting(String greeting) {
         this.greeting = greeting;
@@ -62,4 +78,9 @@ public class User {
         this.work = work;
     }
 
+    @Override
+    public String toString(){
+        String info = String.format("name = %s, greeting = %s, date = %s, university = %s, work = %s", name, greeting, date, university, work);
+        return info;
+    }
 }

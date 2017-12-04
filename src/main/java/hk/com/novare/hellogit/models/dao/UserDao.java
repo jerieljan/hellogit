@@ -1,5 +1,6 @@
 package hk.com.novare.hellogit.models.dao;
 
+
 import hk.com.novare.hellogit.controllers.UserController;
 import hk.com.novare.hellogit.models.User;
 
@@ -12,7 +13,9 @@ import java.util.List;
  *
  * @author jerieljan
  */
+
 public class UserDao {
+
 
     private String status;
     private String message;
@@ -49,4 +52,5 @@ public class UserDao {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
 }

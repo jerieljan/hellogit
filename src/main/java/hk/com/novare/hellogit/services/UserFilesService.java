@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import hk.com.novare.hellogit.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -80,6 +81,17 @@ public class UserFilesService {
         return null;
     }
 
+    public User updateUser(String name, User user){
+        for (User u : users) {
+            if (u.getName().equals(name)) {
+                user.setName(name);
+                BeanUtils.copyProperties(user, u);
+                return user;
+            }
+        }
+        return null;
+    }
+
     /**
      * This will load all users from the filesystem to the provided
      * collection.
@@ -135,3 +147,5 @@ public class UserFilesService {
         }
     }
 }
+
+
