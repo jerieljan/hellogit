@@ -47,6 +47,16 @@ public class HelloGitApplicationTests {
     }
 
     @Test
+    public void testUsersWithinFolder() throws Exception {
+        Assert.assertFalse(userFilesService.getUsers().isEmpty());
+
+        Optional<User> bonRyan = userFilesService.getUsers().stream().filter(it -> it.getName().equals("Bon Ryan")).findFirst();
+        Assert.assertTrue(bonRyan.isPresent());
+        Assert.assertEquals("Hello, this is your mas speaking!", bonRyan.get().getGreeting());
+
+    }
+
+    @Test
     public void testSpecificUserLookupWithUnderscore() throws Exception {
         ResponseEntity<UserDao> userQueryWithSpace = controller.getSpecificUser("Mary_Car");
         Assert.assertNotNull(userQueryWithSpace.getBody());
