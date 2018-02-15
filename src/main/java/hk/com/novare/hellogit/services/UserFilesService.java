@@ -102,7 +102,8 @@ public class UserFilesService {
         Path cwd = Paths.get(USER_DIRECTORY);
         DirectoryStream<Path> currentWorkingDirectory = Files.newDirectoryStream(cwd);
 
-        //Check every folder and file, attempt to parse then add if it's good.
+        //Check every folder and their files, attempt to parse then add if it's good.
+        //This will only load one folder deep.
         currentWorkingDirectory.forEach(folder -> {
             if (Files.isDirectory(folder)) {
                 try {
@@ -115,6 +116,7 @@ public class UserFilesService {
             }
         });
 
+        //Refresh the stream and load the files on the base directory.
         currentWorkingDirectory = Files.newDirectoryStream(cwd);
         parseDirectory(usersList, currentWorkingDirectory);
 

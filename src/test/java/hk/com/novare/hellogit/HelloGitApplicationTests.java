@@ -46,6 +46,10 @@ public class HelloGitApplicationTests {
 
     }
 
+    /**
+     * This test tries to load a user that is under another folder within the resources/users directory.
+     * @throws Exception
+     */
     @Test
     public void testUsersWithinFolder() throws Exception {
         Assert.assertFalse(userFilesService.getUsers().isEmpty());
