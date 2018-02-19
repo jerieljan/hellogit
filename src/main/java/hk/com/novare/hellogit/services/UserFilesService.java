@@ -81,7 +81,7 @@ public class UserFilesService {
         return null;
     }
 
-    public User updateUser(String name, User user){
+    public User updateUser(String name, User user) {
         for (User u : users) {
             if (u.getName().equals(name)) {
                 user.setName(name);
@@ -98,12 +98,40 @@ public class UserFilesService {
      *
      * @param usersList
      */
-    private void loadAllUsers(List<User> usersList) throws IOException {
+    private void loadAllUsers(final List<User> usersList) throws IOException {
         Path cwd = Paths.get(USER_DIRECTORY);
         DirectoryStream<Path> currentWorkingDirectory = Files.newDirectoryStream(cwd);
 
-        //Check every file, attempt to parse then add if it's good.
-        currentWorkingDirectory.forEach(file -> {
+        //Check every folder and their files, attempt to parse then add if it's good.
+        //This will only load one folder deep.
+        currentWorkingDirectory.forEach(folder -> {
+            if (Files.isDirectory(folder)) {
+                try {
+                    DirectoryStream<Path> folderStream = Files.newDirectoryStream(folder);
+                    parseDirectory(usersList, folderStream);
+                } catch (IOException e) {
+                    logger.warn("Could not parse folder and its contents: " + folder.getFileName());
+                }
+
+            }
+        });
+
+        //Refresh the stream and load the files on the base directory.
+        currentWorkingDirectory = Files.newDirectoryStream(cwd);
+        parseDirectory(usersList, currentWorkingDirectory);
+
+        //Sort the results by their names.
+        usersList.sort(Comparator.comparing(User::getName));
+    }
+
+    /**
+     * Parses the files in the provided directory stream, adding valid users to the
+     * user list.
+     * @param usersList
+     * @param directoryStream
+     */
+    private void parseDirectory(final List<User> usersList, final DirectoryStream<Path> directoryStream) {
+        directoryStream.forEach(file -> {
             Optional<User> parsedUser = parseUserFile(file);
 
             //If there's a valid user parsed (and not empty due to errors, add it in!)
@@ -111,9 +139,6 @@ public class UserFilesService {
                 usersList.add(parsedUser.get());
             }
         });
-
-        //Sort the results by their names.
-        usersList.sort(Comparator.comparing(User::getName));
     }
 
     /**
@@ -128,6 +153,9 @@ public class UserFilesService {
     private Optional<User> parseUserFile(Path userFile) {
         try {
             //Read all the lines (Java 7 NIO)
+            if (Files.isDirectory(userFile)) {
+                return Optional.empty();
+            }
             List<String> userFileContents = Files.readAllLines(userFile);
 
             //Place all of it inside a StringBuilder.

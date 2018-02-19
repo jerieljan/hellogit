@@ -32,6 +32,7 @@ public class UserTest {
         Assert.assertEquals("STI College Ortigas-Cainta", u.getUniversity());
         Assert.assertEquals("Web Development (current: Backend)", u.getWork());
         u.setUniversity("PUP");
+
         u.setWork("Software Engineer");
         Assert.assertEquals("Test", u.getName());
         Assert.assertEquals("Hello", u.getGreeting());
