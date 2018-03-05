@@ -27,48 +27,46 @@ public class HelloGitApplicationTests {
     @Autowired
     private UserController controller;
 
-    /**
-     * This performs a simple test to our user service:
-     * Check if it isn't empty (it shouldn't), check the default user and its contents.
-     *
-     * @throws Exception
-     */
+
     @Test
-    public void testUserService() throws Exception {
+    public void testUserService(){
         //When the application runs, the user service must NOT be empty. (Thanks to our example)
         Assert.assertFalse(userFilesService.getUsers().isEmpty());
 
-        //Retrieve the default use (jerieljan.json) and check its contents.
-        Optional<User> defaultUser = userFilesService.getUsers().stream().filter(it -> it.getName().equals("Jeriel")).findFirst();
+
+        Optional<User> defaultUser = userFilesService.getUsers().stream().filter(it -> it.getName().equals("Ed")).findFirst();
         Assert.assertTrue(defaultUser.isPresent());
-        Assert.assertEquals("Hello, this is your instructor speaking!", defaultUser.get().getGreeting());
+        Assert.assertEquals("How you doin' sir? Its nice to be here", defaultUser.get().getGreeting());
+        Assert.assertEquals("February 17, 2018", defaultUser.get().getDate());
+        Assert.assertEquals("Bulacan State University - Sarmiento Campus", defaultUser.get().getUniversity());
+        Assert.assertEquals("Software Developer/Android Developer", defaultUser.get().getWork());
 
 
     }
 
-    /**
-     * This test tries to load a user that is under another folder within the resources/users directory.
-     * @throws Exception
-     */
+
     @Test
-    public void testUsersWithinFolder() throws Exception {
+    public void testUsersWithinFolder(){
         Assert.assertFalse(userFilesService.getUsers().isEmpty());
 
-        Optional<User> bonRyan = userFilesService.getUsers().stream().filter(it -> it.getName().equals("Bon Ryan")).findFirst();
-        Assert.assertTrue(bonRyan.isPresent());
-        Assert.assertEquals("Hello, this is your mas speaking!", bonRyan.get().getGreeting());
+        Optional<User> entryUser = userFilesService.getUsers().stream().filter(it -> it.getName().equals("Ed")).findFirst();
+        Assert.assertTrue(entryUser.isPresent());
+        Assert.assertEquals("How you doin' sir? Its nice to be here", entryUser.get().getGreeting());
 
     }
 
     @Test
-    public void testSpecificUserLookupWithUnderscore() throws Exception {
+    public void testSpecificUserLookupWithUnderscore() {
         ResponseEntity<UserDao> userQueryWithSpace = controller.getSpecificUser("Mary_Car");
         Assert.assertNotNull(userQueryWithSpace.getBody());
         Assert.assertEquals("Mary Car", userQueryWithSpace.getBody().getUsers().get(0).getName());
     }
 
+
+
+
     @Test
-    public void testSpecificUserLookupWithSpace() throws Exception {
+    public void testSpecificUserLookupWithSpace() {
         ResponseEntity<UserDao> userQueryWithSpace = controller.getSpecificUser("Mary Car");
         Assert.assertNotNull(userQueryWithSpace.getBody());
         Assert.assertEquals("Mary Car", userQueryWithSpace.getBody().getUsers().get(0).getName());
@@ -78,21 +76,10 @@ public class HelloGitApplicationTests {
         Assert.assertEquals("Mary Car", userQueryWithEncodedSpace.getBody().getUsers().get(0).getName());
     }
 
-    /*@Test
-    public void testDeleteSpecificUser() throws Exception {
-        ResponseEntity<UserDao> userQueryDeleteUser = controller.deleteUser("Mary Car");
-        Assert.assertNotNull(userQueryDeleteUser.getBody());
-        Assert.assertEquals("Mary Car", userQueryDeleteUser.getBody().getUsers().get(0).getName());
-    }*/
 
-    /**
-     * This performs a  simple test to our controller:
-     * Check if it works, it should respond with OK and with content.
-     *
-     * @throws Exception
-     */
+
     @Test
-    public void testAnnounceController() throws Exception {
+    public void testAnnounceController()  {
         Assert.assertNotNull(controller);
         ResponseEntity<UserDao> testCall = controller.listAllUsers();
         Assert.assertEquals(testCall.getStatusCode(), HttpStatus.OK);
